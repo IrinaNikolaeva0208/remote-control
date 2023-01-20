@@ -5,18 +5,18 @@ class Figure {
         let pointsArray: Point[] = [];
         const startPos = await mouse.getPosition();
         pointsArray.push(startPos);
-        for(let i = 0; i < 200; i++) {        
+        for(let i = 0; i < 800; i++) {        
             const previousPos = pointsArray[pointsArray.length - 1];
             let nextPos: Point;
-            if (i < 100) {
-                const nextX = previousPos.x - startPos.x + radius/50;
+            if (i < 400) {
+                const nextX = previousPos.x - startPos.x + radius/200;
                 const nextY = startPos.y + Math.sqrt(radius**2 - (nextX - radius)**2);
-                nextPos = new Point(previousPos.x + radius/50, nextY)
+                nextPos = new Point(previousPos.x + radius/200, nextY)
             }
             else {
-                const nextX = previousPos.x - startPos.x - radius/50;
+                const nextX = previousPos.x - startPos.x - radius/200;
                 const nextY = startPos.y - Math.sqrt(radius**2 - (nextX - radius)**2);
-                nextPos = new Point(previousPos.x - radius/50, nextY)
+                nextPos = new Point(previousPos.x - radius/200, nextY)
             }
             pointsArray.push(nextPos);
         }

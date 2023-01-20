@@ -51,18 +51,18 @@ var Figure = /** @class */ (function () {
                     case 1:
                         startPos = _a.sent();
                         pointsArray.push(startPos);
-                        for (i = 0; i < 200; i++) {
+                        for (i = 0; i < 800; i++) {
                             previousPos = pointsArray[pointsArray.length - 1];
                             nextPos = void 0;
-                            if (i < 100) {
-                                nextX = previousPos.x - startPos.x + radius / 50;
+                            if (i < 400) {
+                                nextX = previousPos.x - startPos.x + radius / 200;
                                 nextY = startPos.y + Math.sqrt(Math.pow(radius, 2) - Math.pow((nextX - radius), 2));
-                                nextPos = new nut_js_1.Point(previousPos.x + radius / 50, nextY);
+                                nextPos = new nut_js_1.Point(previousPos.x + radius / 200, nextY);
                             }
                             else {
-                                nextX = previousPos.x - startPos.x - radius / 50;
+                                nextX = previousPos.x - startPos.x - radius / 200;
                                 nextY = startPos.y - Math.sqrt(Math.pow(radius, 2) - Math.pow((nextX - radius), 2));
-                                nextPos = new nut_js_1.Point(previousPos.x - radius / 50, nextY);
+                                nextPos = new nut_js_1.Point(previousPos.x - radius / 200, nextY);
                             }
                             pointsArray.push(nextPos);
                         }
