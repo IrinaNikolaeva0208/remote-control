@@ -39,6 +39,7 @@ exports.__esModule = true;
 var ws_1 = require("ws");
 var drawFigures_1 = require("../ui_control/drawFigures");
 var moveMouse_1 = require("../ui_control/moveMouse");
+var printScreen_1 = require("../ui_control/printScreen");
 var wss = new ws_1.WebSocketServer({ port: 8080 });
 wss.on("connection", function (ws) {
     var wsStream = (0, ws_1.createWebSocketStream)(ws);
@@ -50,7 +51,7 @@ wss.on("connection", function (ws) {
     //     console.log(message)
     // });
     ws.on("message", function (data) { return __awaiter(void 0, void 0, void 0, function () {
-        var message, _a, pos;
+        var message, _a, pos, base64str;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
@@ -65,35 +66,42 @@ wss.on("connection", function (ws) {
                         case "mouse_up": return [3 /*break*/, 6];
                         case "mouse_down": return [3 /*break*/, 7];
                         case "mouse_position": return [3 /*break*/, 8];
+                        case "prnt_scrn": return [3 /*break*/, 10];
                     }
-                    return [3 /*break*/, 10];
+                    return [3 /*break*/, 12];
                 case 1:
                     drawFigures_1["default"].draw_circle(+message[1]);
-                    return [3 /*break*/, 10];
+                    return [3 /*break*/, 12];
                 case 2:
                     drawFigures_1["default"].draw_square(+message[1]);
-                    return [3 /*break*/, 10];
+                    return [3 /*break*/, 12];
                 case 3:
                     drawFigures_1["default"].draw_rectangle(+message[1], +message[2]);
-                    return [3 /*break*/, 10];
+                    return [3 /*break*/, 12];
                 case 4:
                     moveMouse_1["default"].mouse_right(+message[1]);
-                    return [3 /*break*/, 10];
+                    return [3 /*break*/, 12];
                 case 5:
                     moveMouse_1["default"].mouse_left(+message[1]);
-                    return [3 /*break*/, 10];
+                    return [3 /*break*/, 12];
                 case 6:
                     moveMouse_1["default"].mouse_up(+message[1]);
-                    return [3 /*break*/, 10];
+                    return [3 /*break*/, 12];
                 case 7:
                     moveMouse_1["default"].mouse_down(+message[1]);
-                    return [3 /*break*/, 10];
+                    return [3 /*break*/, 12];
                 case 8: return [4 /*yield*/, moveMouse_1["default"].mouse_position()];
                 case 9:
                     pos = _b.sent();
                     message.push("".concat(pos.x, ",").concat(pos.y));
-                    return [3 /*break*/, 10];
-                case 10:
+                    return [3 /*break*/, 12];
+                case 10: return [4 /*yield*/, (0, printScreen_1["default"])()];
+                case 11:
+                    base64str = _b.sent();
+                    console.log(base64str);
+                    message.push(base64str);
+                    return [3 /*break*/, 12];
+                case 12:
                     // if(message[0].startsWith("draw")) {
                     //     Figure[message[0]](+message[1], +message[2]);
                     // }

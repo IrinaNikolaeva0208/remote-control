@@ -1,6 +1,7 @@
 import {createWebSocketStream, WebSocketServer, WebSocket} from "ws";
 import Figure from "../ui_control/drawFigures";
 import MousePos from "../ui_control/moveMouse";
+import prnt_scrn from "../ui_control/printScreen";
 
 const wss = new WebSocketServer({port: 8080});
 
@@ -42,13 +43,11 @@ wss.on("connection", (ws: WebSocket) => {
                 const pos = await MousePos.mouse_position();
                 message.push(`${pos.x},${pos.y}`)
                 break;
+            case "prnt_scrn":
+                const base64str = await prnt_scrn();
+                message.push(base64str);
+                break;
         }
-        // if(message[0].startsWith("draw")) {
-        //     Figure[message[0]](+message[1], +message[2]);
-        // }
-        // else if (message[0].startsWith("mouse")) {
-        //     MousePos[message[0]]()
-        // }
         
         ws.send(message.join(" "));
     })
