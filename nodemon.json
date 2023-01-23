@@ -1,0 +1,1 @@
+{ "watch": ["src"], "ext": ".ts,.js", "exec": "npx ts-node ./src/ws_server/server.ts" }
