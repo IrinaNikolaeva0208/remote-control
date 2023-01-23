@@ -287,10 +287,8 @@
                                 b({ x: t[0], y: t[1] });
                             } else if ("prnt_scrn" === e[0]) {
                                 var r = O.data.substring(10);
-                                console.log(r),
-                                    (document.getElementById(
-                                        "screen_wrapper"
-                                    ).src = "data:image/png;base64," + r);
+                                document.getElementById("screen_wrapper").src =
+                                    "data:image/png;base64," + r;
                             }
                             i(function (e) {
                                 return e.concat(O);

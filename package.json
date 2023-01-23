@@ -5,19 +5,21 @@
     "main": "index.js",
     "scripts": {
         "start": "node ./index.js",
-        "start:dev": "nodemon ./index.js",
+        "start:dev": "npx nodemon",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Andrei Auchynnikau",
     "keywords": [],
     "license": "ISC",
     "devDependencies": {
-        "@types/ws": "^8.5.4",
         "nodemon": "^2.0.16"
     },
     "dependencies": {
         "@nut-tree/nut-js": "^2.3.0",
-        "jimp": "^0.16.2",
+        "@types/node": "^18.11.18",
+        "@types/ws": "^8.5.4",
+        "dotenv": "^16.0.3",
+        "ts-node": "^10.9.1",
         "ws": "^8.12.0"
     }
 }
